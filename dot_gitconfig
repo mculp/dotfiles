@@ -1,0 +1,12 @@
+# This is Git's per-user configuration file.
+[user]
+       name = mculp
+       email = matt@culpepper.co
+[pull]
+	ff = only
+[alias]
+	current = rev-parse --abbrev-ref HEAD
+        cb = "!git switch $(git branch --sort=-committerdate -a | ag -v '^\\*' | ag -v 'HEAD' | fzf | sed -E 's/remotes\\/origin\\///')"
+        recent = "!git switch $(git branch --sort=-committerdate --format='%(committerdate:relative)%09%(refname:short)' | ag -v '^\\*' | ag -v 'HEAD' | fzf | cut -f 2)"
+[init]
+	defaultBranch = main
